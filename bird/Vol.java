@@ -1,4 +1,3 @@
-package bird;
 
 import java.util.Random;
 
@@ -21,7 +20,7 @@ public class Vol extends Thread{
        int h = control.etat.moveDown();
        control.affichage.setOval_Y(h);
        
-       try { Thread.sleep(rand.nextInt(200)+100); }
+       try { Thread.sleep(rand.nextInt(50)+10); }
        catch (Exception e) { e.printStackTrace(); }
 	}
 

@@ -1,5 +1,3 @@
-package bird;
-
 import javax.swing.JFrame;
 
 
@@ -20,6 +18,10 @@ public class Main {
 		Control control = new Control(etat, aff);
 		Vol vol = new Vol(control);
 		
+		Parcours parcours = new Parcours(aff);
+		//Avancer avancer = new Avancer(etat);
+		Avancer avancer = new Avancer(aff);
+		
 		JFrame fenetre = new JFrame("Main");
 		aff.addMouseListener(control);
 		fenetre.add(aff);
@@ -29,6 +31,7 @@ public class Main {
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         vol.start();
+        avancer.start();
 	} 
 
 }

@@ -1,5 +1,4 @@
-package bird;
-
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -17,7 +16,7 @@ public class Affichage extends JPanel {
 	public static final int largeur_panel = 800; /** Largeur du panel */
     public static final int hauteur_panel = 500; /** Hauteur du panel */
     
-    public static int OVAL_X = 200;
+    public static int OVAL_X = 50;
     public static int OVAL_Y = 200;
     public static final int OVAL_WIDTH = 50;  /** Largeur de l'oval */
     public static final int OVAL_HEIGHT = 100; /** Hauteur de l'oval */
@@ -37,10 +36,11 @@ public class Affichage extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         g.drawOval(OVAL_X, OVAL_Y, OVAL_WIDTH, OVAL_HEIGHT);
-        
-        for(int i = 0; i < etat.getParcours().getPoints().size()-1; i++) {
-        	Point p1 = etat.getParcours().getPoints().get(i);
-        	Point p2 = etat.getParcours().getPoints().get(i + 1);
+        ;
+        for(int i = 0; i < etat.getP().getPoints().size()-1; i++) {
+        	Point p1 = etat.getP().getPoints().get(i);
+        	Point p2 = etat.getP().getPoints().get(i + 1);
+        	g.setColor(Color.RED);
         	g.drawLine(p1.x, p1.y, p2.x, p2.y);
         }
     }
