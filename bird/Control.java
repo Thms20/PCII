@@ -6,8 +6,8 @@ import java.awt.event.MouseListener;
 /**
  * @author Thomas
  *
- * La classe Control est le contrôleur du modèle MVC. Il définit l'évolution de notre programme.
- * Selon les actions effectuées dans le monde réel, il informe la vue des changements qu'il doit
+ * La classe Control est le contrÃ´leur du modÃ¨le MVC. Il dÃ©finit l'Ã©volution de notre programme.
+ * Selon les actions effectuÃ©es dans le monde rÃ©el, il informe la vue des changements qu'il doit
  * faire.
  */
 
@@ -22,9 +22,9 @@ public class Control implements MouseListener{
 	}
 
 	
-	/** Quand l'utilisateur clique dans la fenêtre, on recommence un affichage avec l'ovale qui 
-	 * effectue la méthode jump, c'est-à-dire que la hauteur de son centre augmente de la valeur
-	 * définie dans la classe Etat (ici 10). */
+	/** Quand l'utilisateur clique dans la fenÃªtre, on recommence un affichage avec l'ovale qui 
+	 * effectue la mÃ©thode jump, c'est-Ã -dire que la hauteur de son centre augmente de la valeur
+	 * dÃ©finie dans la classe Etat (ici 10). */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		this.affichage.repaint();
@@ -32,7 +32,6 @@ public class Control implements MouseListener{
 		int h = this.etat.jump();
         affichage.setOval_Y(h);
         
-		
 	}
 
 	@Override
