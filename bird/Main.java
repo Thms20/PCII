@@ -1,3 +1,4 @@
+package bird;
 import javax.swing.JFrame;
 
 
@@ -5,7 +6,7 @@ import javax.swing.JFrame;
  * 
  * @author Thomas
  * 
- * La classe Main permet de relier les classes entre elles et contient le code lu et donc excÃ©cutÃ©.
+ * La classe Main permet de relier les classes entre elles et contient le code lu et donc excécuté.
  *
  */
 
@@ -19,7 +20,6 @@ public class Main {
 		Vol vol = new Vol(control);
 		
 		Parcours parcours = new Parcours(aff);
-		//Avancer avancer = new Avancer(etat);
 		Avancer avancer = new Avancer(aff);
 		
 		JFrame fenetre = new JFrame("Main");
@@ -32,6 +32,14 @@ public class Main {
         
         vol.start();
         avancer.start();
+        
 	} 
 
 }
+
+/*
+ * Quelle est la formule qui permet de déterminer la valeur de l’ordonnée sur la ligne brisée au 
+ * point d’abscisse correspondant à la position 0 de l’ovale, connaissant les coordonnées relatives
+ *  des points suivants et précédents ?
+ *  - C'est l'interolation linéaire : f(x) = ya + (x- xa) * (yb-ya)/(xb-xa)
+ */

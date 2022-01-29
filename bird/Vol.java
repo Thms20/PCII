@@ -1,4 +1,4 @@
-
+package bird;
 import java.util.Random;
 
 public class Vol extends Thread{
@@ -10,9 +10,10 @@ public class Vol extends Thread{
    }
    
    
-   @Override
+
+@Override
    public void run() {
-	while(control.etat.getHauteur() < control.affichage.getHauteurPanel()) {
+	while(control.etat.getHauteur() < control.affichage.getHauteurPanel() && !control.affichage.etat.testPerdu() ) {
 	   
 	   this.control.affichage.revalidate();
 	   this.control.affichage.repaint();
@@ -20,8 +21,9 @@ public class Vol extends Thread{
        int h = control.etat.moveDown();
        control.affichage.setOval_Y(h);
        
-       try { Thread.sleep(rand.nextInt(50)+10); }
+       try { Thread.sleep(/*rand.nextInt(50)+10 */ 50); }
        catch (Exception e) { e.printStackTrace(); }
+       
 	}
 
    } 

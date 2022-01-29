@@ -1,3 +1,4 @@
+package bird;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -8,8 +9,8 @@ import javax.swing.JPanel;
 /**
  * @author Thomas
  *
- * La classe Affichage correspond Ã  la vue dans le modÃ¨le MVC. 
- * Elle dÃ©crit les formes utilisÃ©es dans l'affichage.
+ * La classe Affichage correspond à la vue dans le modèle MVC. 
+ * Elle décrit les formes utilisées dans l'affichage.
  */
 
 public class Affichage extends JPanel {	
@@ -36,7 +37,7 @@ public class Affichage extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         g.drawOval(OVAL_X, OVAL_Y, OVAL_WIDTH, OVAL_HEIGHT);
-        ;
+
         for(int i = 0; i < etat.getP().getPoints().size()-1; i++) {
         	Point p1 = etat.getP().getPoints().get(i);
         	Point p2 = etat.getP().getPoints().get(i + 1);
@@ -45,7 +46,7 @@ public class Affichage extends JPanel {
         }
     }
     
-    /** Permet de changer la valeur centrale en ordonnÃ©e de l'oval de l'affichage */
+    /** Permet de changer la valeur centrale en ordonnée de l'oval de l'affichage */
     public void setOval_Y(int x) {
     	OVAL_Y = x;
     }

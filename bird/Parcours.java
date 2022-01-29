@@ -1,4 +1,4 @@
-
+package bird;
 import  java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
@@ -8,14 +8,14 @@ public class Parcours {
 	public Affichage aff;
 	
 	public int position = 1;
-	private final int incr = 1;
+	private int score = 0;
 	private final int decalageAbs = 50;
 	
 	public Parcours(Affichage a) {
 		aff = a;
-		int abscisse = 50; // marche car au dÃ©but j'ai mis 200 en x et y
+		int abscisse = 75; // marche car au début j'ai mis 200 en x et y | (abscisse = ovaleX + ovaleWidth/2)
 		int ordonnee = 250;
-		ListeDePoints.add(new Point(abscisse, ordonnee)); // 250 est la valeur en ordonnÃ©e de l'ovale +  la moitiÃ© de sa hauteur
+		ListeDePoints.add(new Point(abscisse, ordonnee)); // 250 est la valeur en ordonnée de l'ovale +  la moitié de sa hauteur
 		
 		int newAbs = (new Random()).nextInt(aff.getLargeurPanel());
 		
@@ -26,14 +26,15 @@ public class Parcours {
 			abscisse = newAbs;
 			newAbs = 0;
 			if(abscisse >= aff.getLargeurPanel()) {
-				ListeDePoints.add(new Point(abscisse, 250)); // Cela me permet de configurer l'ordonnÃ©e du dernier point 
+				ListeDePoints.add(new Point(abscisse, 250)); // Cela me permet de configurer l'ordonnée du dernier point 
 			}
 			else {
 		//		int x = ordonnee;
 		//		while(ordonnee > x + 50 || ordonnee < x - 50) {
 		//	       	ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 50) + 50;
 		//		}
-				ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 50) + 50;
+				ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 50);
+				if(ordonnee < 50)ordonnee+=50;
 				
 				ListeDePoints.add(new Point(abscisse, ordonnee));
 			}
@@ -48,12 +49,15 @@ public class Parcours {
 		return position;
 	}
 	
-	public void setPosition() {
-		position+= incr;
-	}
-	
-	
 	public void setParcours (ArrayList<Point> l) {
 		ListeDePoints = l;
+	}
+	
+	public int getScore() {
+		return score;
+	}
+	
+	public void setScore() {
+		score++;
 	}
 }
