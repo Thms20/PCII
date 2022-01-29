@@ -42,7 +42,7 @@ public class Etat {
     * @return la valeur de hauteur.
     */
    public int jump() {
-   	if(hauteur - saut > 0) // Regarder si ça dépasse pas les bornes définies dans Affichage, à faire quand même package
+   	if(hauteur - saut > -50) // Regarder si ça dépasse pas les bornes définies dans Affichage, à faire quand même package
    	   hauteur-=saut; 
    	return hauteur;
    }
@@ -90,14 +90,18 @@ public class Etat {
    
    public boolean testPerdu(){
 	   int fx;
-	   Point p1 = parcours.getPoints().get(0);
-	   Point p2 = parcours.getPoints().get(1);
-	   fx = (int) (p1.y + ( (parcours.getPosition() + aff.OVAL_X + 25) - p1.x) * (float)(p2.y - p1.y)/(p2.x - p1.x));
+	   Point p1, p2;
+	   if(parcours.getPoints().get(1).x > aff.OVAL_X + aff.OVAL_WIDTH/2) { 
+	       p1 = parcours.getPoints().get(0);
+	       p2 = parcours.getPoints().get(1);
+	   }
+	   else { // Si le deuxième point est inférieur à l'abscisse du centre de l'ovale alors l'ovale est entre le deuxième et troisième point
+		   p1 = parcours.getPoints().get(1);
+	       p2 = parcours.getPoints().get(2);
+	   }
+	   fx = (int) (p1.y + ( (parcours.getPosition() + aff.OVAL_X + aff.OVAL_WIDTH/2) - p1.x) * (float)(p2.y - p1.y)/(p2.x - p1.x));
 
 	   if(fx <= (hauteur+50)-(aff.OVAL_HEIGHT/2) || fx >= (hauteur+50)+(aff.OVAL_HEIGHT/2)) {
-	/*	   JOptionPane fin = new JOptionPane();
-		   String s = "Votre score est de ";
-		   fin.showConfirmDialog(aff, s, "Perdu!", JOptionPane.DEFAULT_OPTION); */
 		   return true;
 	   }
 	   return false;

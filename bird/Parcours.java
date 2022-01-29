@@ -13,7 +13,7 @@ public class Parcours {
 	
 	public Parcours(Affichage a) {
 		aff = a;
-		int abscisse = 75; // marche car au début j'ai mis 200 en x et y | (abscisse = ovaleX + ovaleWidth/2)
+		int abscisse = aff.OVAL_X + aff.OVAL_WIDTH/2; //
 		int ordonnee = 250;
 		ListeDePoints.add(new Point(abscisse, ordonnee)); // 250 est la valeur en ordonnée de l'ovale +  la moitié de sa hauteur
 		
