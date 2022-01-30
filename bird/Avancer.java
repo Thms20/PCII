@@ -15,6 +15,7 @@ public class Avancer extends Thread{
 		
 		
 		while(!aff.etat.testPerdu()) {
+			this.aff.revalidate();
 			this.aff.repaint();
 		    this.aff.etat.getP().setParcours(aff.etat.getParcours());
 		    try { Thread.sleep(20); }

@@ -9,7 +9,9 @@ public class Parcours {
 	
 	public int position = 1;
 	private int score = 0;
-	private final int decalageAbs = 50;
+	private final int decalageAbs = 100;
+	
+	
 	
 	public Parcours(Affichage a) {
 		aff = a;
@@ -25,21 +27,20 @@ public class Parcours {
 			}
 			abscisse = newAbs;
 			newAbs = 0;
-			if(abscisse >= aff.getLargeurPanel()) {
-				ListeDePoints.add(new Point(abscisse, 250)); // Cela me permet de configurer l'ordonnée du dernier point 
-			}
-			else {
-		//		int x = ordonnee;
-		//		while(ordonnee > x + 50 || ordonnee < x - 50) {
-		//	       	ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 50) + 50;
-		//		}
-				ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 50);
-				if(ordonnee < 50)ordonnee+=50;
-				
-				ListeDePoints.add(new Point(abscisse, ordonnee));
-			}
+			int x = ordonnee;
+			ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 75);
+			
+			while(Math.abs(ordonnee - x) > 200) {ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 75);}
+			   // C'est pour éviter une différence trop importante et d'avoir un angle trop petit.
+			
+			if(ordonnee < 75)ordonnee+=75;
+			ListeDePoints.add(new Point(abscisse, ordonnee));
 		}		
 	}
+	
+	
+	
+	
 	
 	public ArrayList<Point> getPoints() {
 		return ListeDePoints;		
@@ -47,6 +48,10 @@ public class Parcours {
 	
 	public int getPosition() {
 		return position;
+	}
+	
+	public int getDecalage() {
+		return decalageAbs;
 	}
 	
 	public void setParcours (ArrayList<Point> l) {

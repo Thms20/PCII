@@ -15,12 +15,13 @@ public class VueOiseau extends JPanel /* Affichage */ {
        private ArrayList<Oiseau> listeOiseaux = new ArrayList<Oiseau>();
        
        public VueOiseau() {
-    	   this.setPreferredSize(new Dimension(800, 500));
+    	//   this.setPreferredSize(new Dimension(800, 500));
     	   listeOiseaux.add((new Oiseau()));
        }
        
        
        public void dessiner(Graphics g) {
+    	   this.revalidate();
     	   this.repaint();
     	   ArrayList<Oiseau> list = new ArrayList<Oiseau>();
     	   

@@ -28,6 +28,7 @@ public class Control implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		
 		if(!affichage.etat.testPerdu()) {
+			this.affichage.revalidate();
 			this.affichage.repaint();
 			
 			int h = this.etat.jump();

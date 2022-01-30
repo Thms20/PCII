@@ -65,6 +65,7 @@ public class Etat {
    public ArrayList<Point> getParcours() {
 	   ArrayList<Point> ldp = parcours.getPoints();
 	   ArrayList<Point> list = new ArrayList<Point>();
+	   
 	   for(int i = 0; i < ldp.size() - 1; i++) {
 		   ldp.get(i).x -= parcours.getPosition();
 		   
@@ -75,14 +76,19 @@ public class Etat {
 		   }
 	   }
 	   
+	   
 	   list.add(new Point(ldp.get(ldp.size()-1).x - parcours.getPosition(), ldp.get(ldp.size()-1).y));
 	   
 	   
 	   if(ldp.get(ldp.size()-1).x <= aff.getLargeurPanel()) {
 		   int ordonnee;
-		   ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 50);
-		   if(ordonnee < 50)ordonnee+=50;
-		   list.add(new Point( (new Random()).nextInt( 100 ) + ldp.get(ldp.size()-1).x + 50, ordonnee));
+		   ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 75);
+		   
+		   while(Math.abs(ordonnee - ldp.get(ldp.size()-1).y) > 200) { ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 75);}
+		   // C'est pour éviter une différence trop importante et d'avoir un angle trop petit.
+		   
+		   if(ordonnee < 75)ordonnee+=75;
+		   list.add(new Point( (new Random()).nextInt( 100 ) + ldp.get(ldp.size()-1).x + parcours.getDecalage(), ordonnee));
 	   }
 	   return list;
    }
@@ -95,7 +101,7 @@ public class Etat {
 	       p1 = parcours.getPoints().get(0);
 	       p2 = parcours.getPoints().get(1);
 	   }
-	   else { // Si le deuxième point est inférieur à l'abscisse du centre de l'ovale alors l'ovale est entre le deuxième et troisième point
+	   else { // Si l'abscisse du deuxième point est inférieur à l'abscisse du centre de l'ovale alors l'ovale est entre le deuxième et troisième point
 		   p1 = parcours.getPoints().get(1);
 	       p2 = parcours.getPoints().get(2);
 	   }

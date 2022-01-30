@@ -26,9 +26,11 @@ public class Main {
 		
 		JFrame fenetre = new JFrame("Main");
 		aff.addMouseListener(control);
+		
 		fenetre.add(oiseau);
 		
         oiseau.add(aff);
+
         
 		fenetre.pack();
         fenetre.setVisible(true);
@@ -37,6 +39,7 @@ public class Main {
         vol.start();
         avancer.start(); 
    
+
 	} 
 
 }
