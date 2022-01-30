@@ -37,9 +37,9 @@ public class Affichage extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.drawOval(OVAL_X, OVAL_Y, OVAL_WIDTH, OVAL_HEIGHT);
+        g.drawOval(OVAL_X, OVAL_Y, OVAL_WIDTH, OVAL_HEIGHT); // Affichage de l'ovale
 
-        for(int i = 0; i < etat.getP().getPoints().size()-1; i++) {
+        for(int i = 0; i < etat.getP().getPoints().size()-1; i++) { // Affichage de la ligne brisée
         	Point p1 = etat.getP().getPoints().get(i);
         	Point p2 = etat.getP().getPoints().get(i + 1);
         	g.setColor(Color.RED);

@@ -1,4 +1,6 @@
 package bird;
+import java.awt.Color;
+
 import javax.swing.JFrame;
 
 
@@ -27,26 +29,41 @@ public class Main {
 		JFrame fenetre = new JFrame("Main");
 		aff.addMouseListener(control);
 		
-		fenetre.add(oiseau);
+		fenetre.add(oiseau); // J'ajoute le panel à la frame
 		
-        oiseau.add(aff);
+        oiseau.add(aff); // Cela me permet de mettre les deux panels en même temps
 
         
 		fenetre.pack();
         fenetre.setVisible(true);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        vol.start();
-        avancer.start(); 
+        vol.start();  // Le thread définit dans la classe Vol commence
+        avancer.start(); // Le thread définit dans la classe Avancer commence
+        
+        
+        (new Thread() {
+        	
+        	/**
+        	 * Ici je centralise les mises à jour de l'affichage pour ne pas surcharger,
+        	 * avec un nouveau Thread.
+        	 */
+            @Override
+            public void run() {
+                    while (true) {
+                            try { Thread.sleep(40); }
+                            catch (InterruptedException e) { e.printStackTrace(); }
+                            aff.revalidate();
+                            aff.repaint();
+                            
+                            oiseau.revalidate();
+                            oiseau.repaint();
+                    }
+            }
+          }).start();
    
 
 	} 
 
 }
 
-/*
- * Quelle est la formule qui permet de déterminer la valeur de l’ordonnée sur la ligne brisée au 
- * point d’abscisse correspondant à la position 0 de l’ovale, connaissant les coordonnées relatives
- *  des points suivants et précédents ?
- *  - C'est l'interpolation linéaire : f(x) = ya + (x- xa) * (yb-ya)/(xb-xa)
- */

@@ -57,11 +57,14 @@ public class Etat {
     return hauteur;
    }
    
+   /** @return le parcours */
    public Parcours getP() {
 	   return parcours;
    }
   
-   
+   /** @return la liste de points mise à jours. 
+    * Permet d'ajouter des nouveaux points quand le dernier point de la liste est visible
+    *  */
    public ArrayList<Point> getParcours() {
 	   ArrayList<Point> ldp = parcours.getPoints();
 	   ArrayList<Point> list = new ArrayList<Point>();
@@ -85,7 +88,7 @@ public class Etat {
 		   ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 75);
 		   
 		   while(Math.abs(ordonnee - ldp.get(ldp.size()-1).y) > 200) { ordonnee = (new Random()).nextInt(aff.getHauteurPanel() - 75);}
-		   // C'est pour éviter une différence trop importante et d'avoir un angle trop petit.
+		   // C'est pour éviter une différence trop importante et de ne pas avoir un angle trop petit.
 		   
 		   if(ordonnee < 75)ordonnee+=75;
 		   list.add(new Point( (new Random()).nextInt( 100 ) + ldp.get(ldp.size()-1).x + parcours.getDecalage(), ordonnee));
@@ -94,6 +97,8 @@ public class Etat {
    }
    
    
+   
+   /** @return un boolean pour savoir si les extrémités de l'ovale touche la ligne brisée */
    public boolean testPerdu(){
 	   int fx;
 	   Point p1, p2;
@@ -105,10 +110,20 @@ public class Etat {
 		   p1 = parcours.getPoints().get(1);
 	       p2 = parcours.getPoints().get(2);
 	   }
+	   
+	   /**
+	    * Quelle est la formule qui permet de déterminer la valeur de l’ordonnée sur la ligne brisée au 
+	    * point d’abscisse correspondant à la position 0 de l’ovale, connaissant les coordonnées relatives
+	    *  des points suivants et précédents ?
+	    *  - C'est l'interpolation linéaire : f(x) = ya + (x- xa) * (yb-ya)/(xb-xa)
+	    */
+	   
 	   fx = (int) (p1.y + ( (parcours.getPosition() + aff.OVAL_X + aff.OVAL_WIDTH/2) - p1.x) * (float)(p2.y - p1.y)/(p2.x - p1.x));
-
+       // Ici j'utilise la formule de l'interpolation linéaire pour avoir une coordonnée en ordonnée.
+	   
+	   
 	   if(fx <= (hauteur+50)-(aff.OVAL_HEIGHT/2) || fx >= (hauteur+50)+(aff.OVAL_HEIGHT/2)) {
-		   return true;
+		   return true; // Egalité permettant de savoir la ligne brisée touche les extrémités de l'ovale.
 	   }
 	   return false;
    }
