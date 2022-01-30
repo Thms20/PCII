@@ -6,11 +6,12 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class VueOiseau extends JPanel {
+public class VueOiseau extends JPanel /* Affichage */ {
        private ArrayList<Oiseau> listeOiseaux = new ArrayList<Oiseau>();
        
        public VueOiseau() {
@@ -35,6 +36,10 @@ public class VueOiseau extends JPanel {
     			   list.add(bird);
     		   }
     		   
+    	   }
+    	   
+    	   if((new Random()).nextInt(100) < 1) { // 1% de chance qu'un nouvel oiseau apparaisse mais vu le temps très court c'est largement suffisant
+    		   list.add(new Oiseau());
     	   }
     	   
     	   listeOiseaux = list;

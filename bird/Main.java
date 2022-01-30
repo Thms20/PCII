@@ -22,12 +22,13 @@ public class Main {
 		Parcours parcours = new Parcours(aff);
 		Avancer avancer = new Avancer(aff);
 		
+		VueOiseau oiseau = new VueOiseau();
+		
 		JFrame fenetre = new JFrame("Main");
 		aff.addMouseListener(control);
-		fenetre.add(aff);
+		fenetre.add(oiseau);
 		
-	//	VueOiseau oiseau = new VueOiseau();
-     //   fenetre.add(oiseau);
+        oiseau.add(aff);
         
 		fenetre.pack();
         fenetre.setVisible(true);

@@ -27,6 +27,7 @@ public class Affichage extends JPanel {
     
     public Affichage() {
     	this.setPreferredSize(new Dimension(largeur_panel, hauteur_panel));
+ 
     }
     
     
@@ -44,6 +45,7 @@ public class Affichage extends JPanel {
         	g.setColor(Color.RED);
         	g.drawLine(p1.x, p1.y, p2.x, p2.y);
         }
+
     }
     
     /** Permet de changer la valeur centrale en ordonnée de l'oval de l'affichage */
