@@ -26,13 +26,16 @@ public class Main {
 		aff.addMouseListener(control);
 		fenetre.add(aff);
 		
+	//	VueOiseau oiseau = new VueOiseau();
+     //   fenetre.add(oiseau);
+        
 		fenetre.pack();
         fenetre.setVisible(true);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         vol.start();
-        avancer.start();
-        
+        avancer.start(); 
+   
 	} 
 
 }
@@ -41,5 +44,5 @@ public class Main {
  * Quelle est la formule qui permet de déterminer la valeur de l’ordonnée sur la ligne brisée au 
  * point d’abscisse correspondant à la position 0 de l’ovale, connaissant les coordonnées relatives
  *  des points suivants et précédents ?
- *  - C'est l'interolation linéaire : f(x) = ya + (x- xa) * (yb-ya)/(xb-xa)
+ *  - C'est l'interpolation linéaire : f(x) = ya + (x- xa) * (yb-ya)/(xb-xa)
  */
